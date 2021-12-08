@@ -1,0 +1,15 @@
+{
+  "name": "autotype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "yarn node-gyp configure && yarn node-gyp build ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-gyp": "^8.4.1"
+  }
+}

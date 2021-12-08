@@ -1,3 +1,4 @@
+import autotype from 'autotype'
 import { ipcMain } from 'electron'
 
 export const initReceiver = () => {
@@ -9,6 +10,7 @@ export const initReceiver = () => {
 
   ipcMain.on('sync-event', (event, arg) => {
     console.log(`Received message ${arg}`)
+    autotype.SwitchWindow()
     event.returnValue = 'some sync response'
 
   })

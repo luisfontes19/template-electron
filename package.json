@@ -6,10 +6,12 @@
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
+    "start:debug": "electron-forge start --inspect-electron",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint --ext .ts,.tsx ."
+    "lint": "eslint --ext .ts,.tsx .",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [],
   "author": {
@@ -32,52 +34,7 @@
     ]
   },
   "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "template_electron"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./webpack.main.config.js",
-            "renderer": {
-              "config": "./webpack.renderer.config.js",
-              "entryPoints": [
-                {
-                  "html": "./src/renderer/index.html",
-                  "js": "./src/renderer/renderer.ts",
-                  "name": "main_window",
-                  "preload": {
-                    "js": "./src/renderer/preload.ts"
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      ]
-    }
+    "forge": "./forge.config.js"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.61",
@@ -85,6 +42,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.0.0-beta.61",
     "@electron-forge/plugin-webpack": "6.0.0-beta.61",
     "@types/node": "^16.11.12",
     "@types/react-dom": "^17.0.11",
@@ -108,6 +66,10 @@
     "@fontsource/roboto": "^4.5.1",
     "@mui/icons-material": "^5.2.1",
     "@mui/lab": "^5.0.0-alpha.59",
-    "@mui/material": "^5.2.3"
+    "@mui/material": "^5.2.3",
+    "autotype": "file:src/native_modules/autotype",
+    "bindings": "^1.5.0",
+    "electron-rebuild": "^3.2.5",
+    "node-gyp": "^8.4.1"
   }
 }
