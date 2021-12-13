@@ -7,6 +7,8 @@ This project is a quick template to bootstrap an electron project.
 * Webpack
 * Typescript
 * ESLint
+* React
+* Material UI
 
 ## src/ structure
 * main - [The main process from electron](https://www.electronjs.org/blog/electron-internals-node-integration#the-main-process-and-renderer-process)
